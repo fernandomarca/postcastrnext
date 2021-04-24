@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body style={{ overflow: "hidden" }}>
           <Main />
           <NextScript />
         </body>

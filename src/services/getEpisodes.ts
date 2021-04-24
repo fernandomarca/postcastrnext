@@ -43,3 +43,29 @@ export async function getEpisodes() {
 
   return episodes;
 }
+
+export async function getEpisodeBySlug(slug: string) {
+  const { data } = await api.get<Episode>(`/episodes/${slug}`, {
+    params: {
+      _limit: 12,
+      _sort: "published",
+      _order: "desc",
+    },
+  });
+
+  const episode = {
+    id: data.id,
+    title: data.title,
+    thumbnail: data.thumbnail,
+    members: data.members,
+    publishedAt: format(parseISO(data.published_at), "d MMM yy", {
+      locale: ptBR,
+    }),
+    duration: data.file.duration,
+    durationAsString: convertDurationToTimeString(data.file.duration),
+    description: data.description,
+    url: data.file.url,
+  };
+
+  return episode;
+}
