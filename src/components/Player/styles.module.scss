@@ -14,6 +14,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   strong {
@@ -26,6 +27,26 @@
     &.empty {
       opacity: 0.5;
     }
+  }
+}
+
+.currentEpisode {
+  text-align: center;
+
+  img {
+    border-radius: 1.5rem;
+  }
+  strong {
+    display: flex;
+    margin-top: 2rem;
+    font: 600 1.25rem Lexend, sans-serif;
+    line-height: 1.75rem;
+  }
+  span {
+    display: flex;
+    margin: 1rem 0;
+    opacity: 0.6;
+    line-height: 1.5rem;
   }
 }
 
@@ -52,6 +73,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
+  margin-top: 1rem;
 
   span {
     display: block;
@@ -82,12 +104,25 @@
     background: transparent;
     border: 0;
     font-size: 0;
+    transition: filter 0.2s;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      filter: brightness(0.7);
+    }
 
     &.playButton {
       width: 4rem;
       height: 4rem;
       border-radius: 1rem;
       background: var(--purple-400);
+
+      &:hover:not(:disabled) {
+        filter: brightness(0.95);
+      }
     }
   }
 }
